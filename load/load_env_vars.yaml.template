@@ -1,0 +1,20 @@
+shared:
+  REGION: us-central1
+  FROM_DBT_IMAGE_URI: us-central1-docker.pkg.dev/ids-sf-services-prod/docker-images-repo/dbt-base-image:dbt-1.8.3--240711
+  BUILD_BASE_IMAGE_URI: us-central1-docker.pkg.dev/__PROJECT__/docker-images-repo/dbt-mortgage-map-image
+  KUBE_SA: ksa-mortgage-map
+
+dev:
+  RUN_ENV: dev
+  PROJECT: ids-sf-services-dev
+  KUBE_CONTEXT: gke_ids-sf-services-dev_us-central1_us-central1-composer--servi-ca41830c-gke
+
+ppe:
+  RUN_ENV: ppe
+  PROJECT: ids-sf-services-ppe
+  KUBE_CONTEXT: gke_ids-sf-services-ppe_us-central1_us-central1-composer--servi-ac6350ab-gke
+
+prod:
+  RUN_ENV: prod
+  PROJECT: ids-sf-services-prod
+  KUBE_CONTEXT: gke_ids-sf-services-prod_us-central1_us-central1-composer--servi-a0a902e1-gke
