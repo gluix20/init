@@ -1,0 +1,16 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker build --build-arg FROM_DBT_IMAGE_URI=${_FROM_DBT_IMAGE_URI} -t local-image .']
+
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker tag local-image $_BASE_URI_DEV:$_REPO_TAG && docker push $_BASE_URI_DEV:$_REPO_TAG']
+
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker tag local-image $_BASE_URI_PPE:$_REPO_TAG && docker push $_BASE_URI_PPE:$_REPO_TAG']
+
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker tag local-image $_BASE_URI_PROD:$_REPO_TAG && docker push $_BASE_URI_PROD:$_REPO_TAG']
