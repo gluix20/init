@@ -6,5 +6,7 @@ CALL_DIR="$(pwd)"
 
 pushd $REPO_DIR > /dev/null
     git pull origin main > /dev/null
-    # cp README.md $CALL_DIR/READ2
+    cp load/* $CALL_DIR/.
+    cp build_ice/* $CALL_DIR/.
+    cp pod/* $CALL_DIR/.
 popd
