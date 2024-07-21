@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ${OBJ_NAME}
+  namespace: af-user-jobs
+spec:
+  serviceAccountName: ${KUBE_SA}
+  containers:
+  - name: ${OBJ_NAME}-pod
+    image: ${IMAGE_URI}
+    imagePullPolicy: Always
+    resources:
+      limits:
+        cpu: "8"
+        memory: 8Gi
+        ephemeral-storage: 4Gi
+      requests:
+        cpu: "8"
+        memory: 8Gi
+        ephemeral-storage: 4Gi
+    # command: ["/bin/sh"]
+    # args: ["-c", "while true; do sleep 30; done;"]
+    command: ["/bin/sh"]
+    args: ["-c", "/usr/src/app/entrypoint.sh wait"]
+    env:
+    - name: RUN_ENV
+      value: ${RUN_ENV}
