@@ -6,7 +6,13 @@ CALL_DIR="$(pwd)"
 
 pushd $REPO_DIR > /dev/null
     git pull origin main > /dev/null
-    cp load/* $CALL_DIR/.
-    cp build_ice/* $CALL_DIR/.
-    cp pod/* $CALL_DIR/.
+    cp -r load/* $CALL_DIR/.
+
+    if [ "$1" == "pod" ]; then
+        cp -r pod/* $CALL_DIR/.
+    fi
+
+    if [ "$1" == "build_dbt" ]; then
+        cp -r build_ice/* $CALL_DIR/.
+    fi
 popd
