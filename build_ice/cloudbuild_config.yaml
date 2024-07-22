@@ -5,12 +5,12 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker tag local-image $_BASE_URI_DEV:$_REPO_TAG && docker push $_BASE_URI_DEV:$_REPO_TAG']
+  args: ['-c', 'docker tag local-image $_BUILD_IMAGE_URI_DEV && docker push $_BUILD_IMAGE_URI_DEV']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker tag local-image $_BASE_URI_PPE:$_REPO_TAG && docker push $_BASE_URI_PPE:$_REPO_TAG']
+  args: ['-c', 'docker tag local-image $_BUILD_IMAGE_URI_PPE && docker push $_BUILD_IMAGE_URI_PPE']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker tag local-image $_BASE_URI_PROD:$_REPO_TAG && docker push $_BASE_URI_PROD:$_REPO_TAG']
+  args: ['-c', 'docker tag local-image $_BUILD_IMAGE_URI_PROD && docker push $_BUILD_IMAGE_URI_PROD']
