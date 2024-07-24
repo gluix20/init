@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker build --build-arg FROM_DBT_IMAGE_URI=${_FROM_DBT_IMAGE_URI} -t local-image .']
+  args: ['-c', 'docker build --build-arg FROM_IMAGE_URI=${_FROM_IMAGE_URI} -t local-image .']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
